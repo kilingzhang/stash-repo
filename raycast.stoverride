@@ -1,0 +1,17 @@
+name: Raycast Pro
+desc: Raycast Pro
+http:
+  mitm:
+    - "backend.raycast.com"
+  script:
+    - match: ^https:\/\/backend\.raycast\.com\/api\/*
+      name: raycast
+      type: response
+      require-body: true
+      debug: true
+      timeout: 10
+script-providers:
+  raycast:
+    #url: http://192.168.31.247:8080/raycast.js
+    url: https://raw.githubusercontent.com/kilingzhang/stash-repo/main/raycast.js
+    interval: 86400
