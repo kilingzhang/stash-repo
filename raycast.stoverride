@@ -4,9 +4,16 @@ http:
   mitm:
     - "backend.raycast.com"
   script:
-    - match: ^https:\/\/backend\.raycast\.com\/api\/*
+    - match: ^https:\/\/backend\.raycast\.com\/api\/v1\/(me|me\/trial_status|ai\/models)
       name: raycast
       type: response
+      require-body: true
+      debug: true
+      timeout: 10
+    - match: ^https:\/\/backend\.raycast\.com\/api\/v1\/ai\/chat_completions
+      name: raycast-chat
+      type: response
+      argument: 'OPENAI_API_KEY=&OPENAI_API_PROXY=https://api.openai.com/v1/chat/completions'
       require-body: true
       debug: true
       timeout: 10
@@ -14,4 +21,8 @@ script-providers:
   raycast:
     #url: http://192.168.31.247:8080/raycast.js
     url: https://raw.githubusercontent.com/kilingzhang/stash-repo/main/raycast.js
+    interval: 86400
+  raycast-chat:
+    #url: http://192.168.31.247:8080/raycast-chat.js
+    url: https://raw.githubusercontent.com/kilingzhang/stash-repo/main/raycast-chat.js
     interval: 86400
