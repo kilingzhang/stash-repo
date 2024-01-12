@@ -14,7 +14,7 @@ if (typeof $argument !== 'undefined' && $argument !== '') {
         const params = Object.fromEntries($argument.split('&').map(item => item.split('=')));
         Object.assign(options, params);
     } catch (error) {
-        $notification.post("raycast", '$argument解析失败', error.message)
+        $notification.post("raycast", 'argument 解析失败', error.message)
         $done({});
     }
 }
@@ -71,11 +71,13 @@ try {
                         console.log("catch error : " + error.message)
                         $done({});
                     } else {
-                        console.log("after response:\n" + data)
+                        console.log("OpenAI response finish:\n" + data)
                         data = JSON.parse(data)
-                        data = {"text": data['choices'][0]['message']['content'], "finish_reason": 'finished'}
-                        data = `data: ${JSON.stringify(data)}\n\n`
-                        console.log("after data:\n" + data)
+                        data = `data: ${JSON.stringify({"text": data['choices'][0]['message']['content']})}\n\ndata: ${JSON.stringify({
+                            "text": "",
+                            "finish_reason": 'length'
+                        })}\n\n`
+                        console.log("stream:\n" + data)
                         $done({
                             response: {
                                 status: 200,
