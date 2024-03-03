@@ -3,8 +3,8 @@ let response = $response
 console.log("before request:\n" + JSON.stringify(request))
 console.log("before response:\n" + JSON.stringify(response))
 try {
+    console.log("before response.body:\n" + response.body)
     console.log(typeof response.body)
-    console.log(response.body)
     const byteArray = new Uint8Array(response.body);
     // 创建一个TextDecoder对象
     const decoder = new TextDecoder();
