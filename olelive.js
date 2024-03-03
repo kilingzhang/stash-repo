@@ -3,6 +3,7 @@ let response = $response
 console.log("before request:\n" + JSON.stringify(request))
 console.log("before response:\n" + JSON.stringify(response))
 try {
+    console.log("before response.body:\n" + response.body)
     response.body = JSON.parse(response.body)
     response.body['data']['groupId'] = 3
     response.body['data']['userEndTime'] = 1809501275
