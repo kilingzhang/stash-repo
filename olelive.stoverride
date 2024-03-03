@@ -1,0 +1,17 @@
+name: olelive VIP
+desc: olelive VIP
+http:
+  mitm:
+    - api.olelive.com
+  script:
+    - match: ^https:\/\/api\.olelive\.com\/pub\/user\/info
+      name: olelive
+      type: response
+      require-body: true
+      binary-mode: true
+      timeout: 10
+script-providers:
+  olelive:
+    url: https://raw.githubusercontent.com/kilingzhang/stash-repo/main/olelive.js
+    #url: http://127.0.0.1:8080/olelive.js
+    interval: 86400
