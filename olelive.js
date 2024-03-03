@@ -3,12 +3,8 @@ let response = $response
 console.log("before request:\n" + JSON.stringify(request))
 console.log("before response:\n" + JSON.stringify(response))
 try {
-    console.log("before response.body:\n" + response.body)
-    console.log(typeof response.body)
-    const byteArray = new Uint8Array(response.body);
-    // 创建一个TextDecoder对象
-    const decoder = new TextDecoder();
-    response.body = JSON.parse(decoder.decode(byteArray))
+    console.log("before response.body:\n" + String.fromCharCode(...response.body))
+    response.body = JSON.parse(String.fromCharCode(...response.body))
     response.body['data']['groupId'] = 3
     response.body['data']['userEndTime'] = 1809501275
     response.body = JSON.stringify(response.body)
