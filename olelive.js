@@ -3,7 +3,9 @@ let response = $response
 console.log("before request:\n" + JSON.stringify(request))
 console.log("before response:\n" + JSON.stringify(response))
 try {
-    const byteArray = new Uint8Array(response.body.split(','));
+    console.log(typeof response.body)
+    console.log(response.body)
+    const byteArray = new Uint8Array(response.body);
     // 创建一个TextDecoder对象
     const decoder = new TextDecoder();
     response.body = JSON.parse(decoder.decode(byteArray))
