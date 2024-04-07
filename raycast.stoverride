@@ -4,4 +4,4 @@ http:
   mitm:
     - backend.raycast.com
   url-rewrite:
-    - https://backend.raycast.com https://raycast-pro-proxy.kylecianchi.workers.dev transparent
+    - https://backend.raycast.com https://raycast-unblock.saaskit.app transparent
