@@ -3,5 +3,7 @@ desc: Raycast Pro
 http:
   mitm:
     - backend.raycast.com
+    - api.ray.so
   url-rewrite:
     - https://backend.raycast.com https://raycast-unblock.saaskit.app transparent
+    - https://api.ray.so https://raycast-unblock.saaskit.app transparent
